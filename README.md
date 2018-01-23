@@ -11,7 +11,7 @@ It includes:
 - Metrics and logging stuff
 - i18n language support
 - [Snyk]
-- [xo]
+- [xo] for linting
 
 To get started clone the repo and run 
 
@@ -30,3 +30,4 @@ Then go to [http://localhost:3000/](http://localhost:3000/) to see it in action.
 [Elements]: https://github.com/alphagov/govuk_elements
 [Toolkit]: https://github.com/alphagov/govuk_frontend_toolkit
 [Browserify]: http://browserify.org/
+[xo]: https://github.com/sindresorhus/xo
