@@ -1,0 +1,23 @@
+{% extends "../../govuk_modules/govuk_template/views/layouts/govuk_template.njk" %}
+
+{% set homepage_url = '/' %}
+
+{% set logo_link_title = 'Go to the the GOV.UK Pay Homepage' %}
+
+{% block page_title %}GDS Node.js boilerplate{% endblock %}
+
+{% block head %}
+  {% include "common/templates/includes/head.njk" %}
+{% endblock %}
+
+{% block cookie_message %}
+  {% include "common/templates/includes/cookies.njk" %}
+{% endblock %}
+
+{% block footer_support_links %}
+  {% include "common/templates/includes/footer-support-links.njk" %}
+{% endblock %}
+
+{% block body_end %}
+  {% include "common/templates/includes/scripts.njk" %}
+{% endblock %}
