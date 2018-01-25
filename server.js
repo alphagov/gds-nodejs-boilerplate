@@ -1,7 +1,6 @@
 // Node.js core dependencies
 const path = require('path')
 
-
 // Npm dependencies
 const express = require('express')
 const favicon = require('serve-favicon')
