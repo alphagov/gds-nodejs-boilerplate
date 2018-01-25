@@ -20,12 +20,10 @@
     "watch-live-reload": "./node_modules/.bin/grunt watch",
     "lint-sass": "./node_modules/.bin/sass-lint -v",
     "test": "xo && node ./node_modules/mocha/bin/mocha '!(node_modules)/**/*+(.test|.tests)'.js",
-    "snyk-protect": "snyk protect",
+    "snyk-protect": "./node_modules/.bin/snyk protect",
     "prepublish": "npm run snyk-protect"
   },
   "dependencies": {
-    "appmetrics": "1.1.2",
-    "appmetrics-statsd": "1.0.1",
     "body-parser": "1.18.x",
     "client-sessions": "0.8.x",
     "compression": "1.7.x",
