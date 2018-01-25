@@ -1,8 +1,6 @@
 // Node.js core dependencies
 const path = require('path')
 
-// Please leave here even though it looks unused - this enables Node.js metrics to be pushed to Hosted Graphite
-require('./common/utils/metrics').metrics()
 
 // Npm dependencies
 const express = require('express')

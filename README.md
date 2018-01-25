@@ -8,7 +8,6 @@ It includes:
 - [Browserify] with babelify and Nunjucksify
 - Mocha for testing
 - Middleware to set correlation headers
-- Metrics and logging stuff
 - i18n language support
 - [Snyk]
 - [xo] for linting
