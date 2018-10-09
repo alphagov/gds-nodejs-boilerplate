@@ -7,14 +7,14 @@ const throng = require('throng')
 const server = require('./server')
 
 const pidFile = path.join(__dirname, '/.start.pid')
-const fileOptions = {encoding: 'utf-8'}
+const fileOptions = { encoding: 'utf-8' }
 let pid
 
 /**
  * Throng is a wrapper around node cluster
  * https://github.com/hunterloftis/throng
  */
-function start() {
+function start () {
   throng({
     workers: process.env.NODE_WORKER_COUNT || 1,
     master: startMaster,
@@ -25,7 +25,7 @@ function start() {
 /**
  * Start master process
  */
-function startMaster() {
+function startMaster () {
   logger.info(`Master started. PID: ${process.pid}`)
   process.on('SIGINT', () => {
     logger.info(`Master exiting`)
@@ -37,7 +37,7 @@ function startMaster() {
  * Start cluster worker. Log start and exit
  * @param  {Number} workerId
  */
-function startWorker(workerId) {
+function startWorker (workerId) {
   server.start()
 
   logger.info(`Started worker ${workerId}, PID: ${process.pid}`)
@@ -51,7 +51,7 @@ function startWorker(workerId) {
 /**
  * Make sure all child processes are cleaned up
  */
-function onInterrupt() {
+function onInterrupt () {
   pid = fs.readFileSync(pidFile, fileOptions)
   fs.unlink(pidFile)
   process.kill(pid, 'SIGTERM')
@@ -61,7 +61,7 @@ function onInterrupt() {
 /**
  * Keep track of processes, and clean up on SIGINT
  */
-function monitor() {
+function monitor () {
   fs.writeFileSync(pidFile, process.pid, fileOptions)
   process.on('SIGINT', onInterrupt)
 }

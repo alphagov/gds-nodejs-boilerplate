@@ -21,9 +21,9 @@ const correlationHeader = require('./common/middleware/correlation-header')
 // Global constants
 const unconfiguredApp = express()
 const oneYear = 86400000 * 365
-const publicCaching = {maxAge: oneYear}
+const publicCaching = { maxAge: oneYear }
 const PORT = (process.env.PORT || 3000)
-const {NODE_ENV} = process.env
+const { NODE_ENV } = process.env
 const CSS_PATH = staticify.getVersionedPath('/stylesheets/application.min.css')
 const JAVASCRIPT_PATH = staticify.getVersionedPath('/javascripts/application.js')
 
@@ -33,8 +33,8 @@ const APP_VIEWS = [
   __dirname
 ]
 
-function initialiseGlobalMiddleware(app) {
-  app.set('settings', {getVersionedPath: staticify.getVersionedPath})
+function initialiseGlobalMiddleware (app) {
+  app.set('settings', { getVersionedPath: staticify.getVersionedPath })
   app.use(favicon(path.join(__dirname, 'govuk_modules', 'govuk_template', 'assets', 'images', 'favicon.ico')))
   app.use(compression())
   app.use(staticify.middleware)
@@ -50,12 +50,12 @@ function initialiseGlobalMiddleware(app) {
     next()
   })
   app.use(bodyParser.json())
-  app.use(bodyParser.urlencoded({extended: true}))
+  app.use(bodyParser.urlencoded({ extended: true }))
 
   app.use('*', correlationHeader)
 }
 
-function initialiseI18n(app) {
+function initialiseI18n (app) {
   i18n.configure({
     locales: ['en'],
     directory: path.join(__dirname, '/locales'),
@@ -66,11 +66,11 @@ function initialiseI18n(app) {
   app.use(i18n.init)
 }
 
-function initialiseProxy(app) {
+function initialiseProxy (app) {
   app.enable('trust proxy')
 }
 
-function initialiseTemplateEngine(app) {
+function initialiseTemplateEngine (app) {
   // Configure nunjucks
   // see https://mozilla.github.io/nunjucks/api.html#configure
   const nunjucksConfiguration = {
@@ -95,7 +95,7 @@ function initialiseTemplateEngine(app) {
   nunjucksEnvironment.addGlobal('js_path', NODE_ENV === 'production' ? JAVASCRIPT_PATH : staticify.getVersionedPath('/javascripts/application.js'))
 }
 
-function initialisePublic(app) {
+function initialisePublic (app) {
   app.use('/javascripts', express.static(path.join(__dirname, '/public/assets/javascripts'), publicCaching))
   app.use('/images', express.static(path.join(__dirname, '/public/images'), publicCaching))
   app.use('/stylesheets', express.static(path.join(__dirname, '/public/assets/stylesheets'), publicCaching))
@@ -104,11 +104,11 @@ function initialisePublic(app) {
   app.use('/public', express.static(path.join(__dirname, '/govuk_modules/govuk_template/assets')))
 }
 
-function initialiseRoutes(app) {
+function initialiseRoutes (app) {
   router.bind(app)
 }
 
-function listen() {
+function listen () {
   const app = initialise()
   app.listen(PORT)
   logger.info('Listening on port ' + PORT)
@@ -118,7 +118,7 @@ function listen() {
  * Configures app
  * @return app
  */
-function initialise() {
+function initialise () {
   const app = unconfiguredApp
   app.disable('x-powered-by')
   initialiseProxy(app)
@@ -133,7 +133,7 @@ function initialise() {
 /**
  * Starts app after ensuring DB is up
  */
-function start() {
+function start () {
   listen()
 }
 
