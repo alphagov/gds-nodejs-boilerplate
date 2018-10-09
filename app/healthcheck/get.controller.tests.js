@@ -3,7 +3,7 @@
 // NPM dependencies
 const expect = require('chai').expect
 const supertest = require('supertest')
-const {describe, it} = require('mocha')
+const { describe, it } = require('mocha')
 
 // Local dependencies
 const getApp = require('../../server').getApp
