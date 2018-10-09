@@ -7,10 +7,6 @@
   "engines": {
     "node": ">6.12.2"
   },
-  "xo": {
-    "space": true,
-    "semicolon": false
-  },
   "scripts": {
     "compile": "grunt generate-assets",
     "clean": "grunt clean",
@@ -19,7 +15,7 @@
     "watch": "chokidar app test *.js --initial -c 'npm run test'",
     "watch-live-reload": "./node_modules/.bin/grunt watch",
     "lint-sass": "./node_modules/.bin/sass-lint -v",
-    "test": "xo && node ./node_modules/mocha/bin/mocha '!(node_modules)/**/*+(.test|.tests)'.js",
+    "test": "standard && node ./node_modules/mocha/bin/mocha '!(node_modules)/**/*+(.test|.tests)'.js",
     "snyk-protect": "./node_modules/.bin/snyk protect",
     "prepublish": "npm run snyk-protect"
   },
@@ -78,8 +74,8 @@
     "rfc822-validate": "^1.0.0",
     "sass-lint": "^1.10.2",
     "snyk": "1.54.x",
-    "supertest": "^3.0.0",
-    "xo": "^0.18.2"
+    "standard": "^12.0.1",
+    "supertest": "^3.0.0"
   },
   "snyk": true
 }
