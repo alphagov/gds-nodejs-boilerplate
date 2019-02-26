@@ -1,23 +1,33 @@
-{% extends "../../govuk_modules/govuk_template/views/layouts/govuk_template.njk" %}
+{% from "components/footer/macro.njk" import govukFooter %}
 
-{% set homepage_url = '/' %}
+{% extends "template.njk" %}
 
-{% set logo_link_title = 'Go to the GOV.UK Homepage' %}
-
-{% block page_title %}GDS Node.js boilerplate{% endblock %}
+{% block pageTitle %}GDS Node.js boilerplate{% endblock %}
 
 {% block head %}
   {% include "common/templates/includes/head.njk" %}
 {% endblock %}
 
-{% block cookie_message %}
+{% block bodyStart %}
   {% include "common/templates/includes/cookies.njk" %}
 {% endblock %}
 
-{% block footer_support_links %}
-  {% include "common/templates/includes/footer-support-links.njk" %}
+{% block content %}
+  <div class="govuk-grid-row">
+    {% block mainContent %}{% endblock %}
+  </div>
 {% endblock %}
 
-{% block body_end %}
+{% block footer %}
+  {{
+    govukFooter({
+      meta: {
+        html: 'Built by the <a href="#" class="govuk-footer__link">Government Digital Service</a>'
+      }
+    })
+  }}
+{% endblock %}
+
+{% block bodyEnd %}
   {% include "common/templates/includes/scripts.njk" %}
 {% endblock %}

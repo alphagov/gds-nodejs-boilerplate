@@ -29,13 +29,13 @@ const JAVASCRIPT_PATH = staticify.getVersionedPath('/javascripts/application.js'
 
 // Define app views
 const APP_VIEWS = [
-  path.join(__dirname, '/govuk_modules/govuk_template/views/layouts'),
+  path.join(__dirname, 'node_modules/govuk-frontend/'),
   __dirname
 ]
 
 function initialiseGlobalMiddleware (app) {
   app.set('settings', { getVersionedPath: staticify.getVersionedPath })
-  app.use(favicon(path.join(__dirname, 'govuk_modules', 'govuk_template', 'assets', 'images', 'favicon.ico')))
+  app.use(favicon(path.join(__dirname, 'node_modules/govuk-frontend/assets/', 'images', 'favicon.ico')))
   app.use(compression())
   app.use(staticify.middleware)
 
@@ -79,7 +79,7 @@ function initialiseTemplateEngine (app) {
     throwOnUndefined: false, // Throw errors when outputting a null/undefined value
     trimBlocks: true, // Automatically remove trailing newlines from a block/tag
     lstripBlocks: true, // Automatically remove leading whitespace from a block/tag
-    watch: false, // Reload templates when they are changed (server-side). To use watch, make sure optional dependency chokidar is installed
+    watch: NODE_ENV !== 'production', // Reload templates when they are changed (server-side). To use watch, make sure optional dependency chokidar is installed
     noCache: NODE_ENV !== 'production' // Never use a cache and recompile templates each time (server-side)
   }
 
@@ -100,8 +100,7 @@ function initialisePublic (app) {
   app.use('/images', express.static(path.join(__dirname, '/public/images'), publicCaching))
   app.use('/stylesheets', express.static(path.join(__dirname, '/public/assets/stylesheets'), publicCaching))
   app.use('/public', express.static(path.join(__dirname, '/public')))
-  app.use('/public', express.static(path.join(__dirname, '/govuk_modules/govuk_frontend_toolkit')))
-  app.use('/public', express.static(path.join(__dirname, '/govuk_modules/govuk_template/assets')))
+  app.use('/', express.static(path.join(__dirname, '/node_modules/govuk-frontend/')))
 }
 
 function initialiseRoutes (app) {
