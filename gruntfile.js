@@ -9,8 +9,7 @@ module.exports = function (grunt) {
         style: 'expanded',
         sourcemap: true,
         includePaths: [
-          'govuk_modules/govuk_frontend_toolkit/stylesheets',
-          'node_modules/govuk-elements-sass/public/sass/'
+          'node_modules'
         ],
         outputStyle: 'expanded'
       },
@@ -24,48 +23,6 @@ module.exports = function (grunt) {
     }
   }
 
-  const copy = {
-    assets: {
-      files: [
-        {
-          expand: true,
-          cwd: 'common/assets/',
-          src: ['**/*', '!sass/**'],
-          dest: 'public/'
-        },
-        {
-          expand: true,
-          cwd: 'govuk_modules/govuk_frontend_toolkit/images/',
-          src: ['**/*', '!sass/**'],
-          dest: 'public/images/icons'
-        }
-      ]
-    },
-    govuk: {
-      files: [
-        {
-          expand: true,
-          cwd: 'node_modules/govuk_frontend_toolkit',
-          src: '**',
-          dest: 'govuk_modules/govuk_frontend_toolkit/'
-        },
-        {
-          expand: true,
-          cwd: 'node_modules/govuk-elements-sass',
-          src: '**',
-          dest: 'govuk_modules/govuk-elements-sass/'
-        },
-        {
-          expand: true,
-          cwd: 'node_modules/govuk_template_jinja/',
-          src: '**',
-          dest: 'govuk_modules/govuk_template/',
-          rename: (dest, src) => dest + src.replace('html', 'njk')
-        }
-      ]
-    }
-  }
-
   const cssmin = {
     target: {
       files: {
@@ -73,19 +30,6 @@ module.exports = function (grunt) {
           'public/stylesheets/application.css'
         ]
       }
-    }
-  }
-
-  const replace = {
-    fixSass: {
-      src: ['govuk_modules/govuk_frontend_toolkit/**/*.scss'],
-      overwrite: true,
-      replacements: [
-        {
-          from: /filter:chroma(.*);/g,
-          to: 'filter:unquote("chroma$1");'
-        }
-      ]
     }
   }
 
@@ -190,8 +134,6 @@ module.exports = function (grunt) {
   grunt.initConfig({
     clean: ['public', 'govuk_modules'],
     sass,
-    copy,
-    replace,
     watch,
     browserify,
     nodemon,
@@ -203,14 +145,12 @@ module.exports = function (grunt) {
   });
 
   [
-    'grunt-contrib-copy',
     'grunt-contrib-cssmin',
     'grunt-contrib-compress',
     'grunt-contrib-watch',
     'grunt-contrib-clean',
     'grunt-sass',
     'grunt-nodemon',
-    'grunt-text-replace',
     'grunt-concurrent',
     'grunt-browserify',
     'grunt-contrib-concat',
@@ -221,8 +161,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('generate-assets', [
     'clean',
-    'copy',
-    'replace',
     'sass',
     'browserify',
     'concat',
