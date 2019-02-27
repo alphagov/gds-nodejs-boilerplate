@@ -8,16 +8,6 @@
   {% include "common/templates/includes/head.njk" %}
 {% endblock %}
 
-{% block bodyStart %}
-  {% include "common/templates/includes/cookies.njk" %}
-{% endblock %}
-
-{% block content %}
-  <div class="govuk-grid-row">
-    {% block mainContent %}{% endblock %}
-  </div>
-{% endblock %}
-
 {% block footer %}
   {{
     govukFooter({
