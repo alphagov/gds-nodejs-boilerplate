@@ -4,10 +4,12 @@
   {{ message }}
 {% endblock %}
 
-{% block mainContent %}
-<div class="govuk-grid-column-two-thirds">
-  <h1 class="govuk-heading-xl">
-    {{ message }}
-  </h1>
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">
+      {{ message }}
+    </h1>
+  </div>
 </div>
 {% endblock %}
