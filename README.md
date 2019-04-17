@@ -4,7 +4,7 @@ This is a skeleton Node.js app running on [Express] with [Nunjucks] as a templat
 
 It includes:
 - Grunt for compliation of sass/js
-- [GOV.UK Template], [Elements] and [Toolkit]
+- [GOV.UK Frontend]
 - [Browserify] with babelify and Nunjucksify
 - Mocha for testing
 - Middleware to set correlation headers
@@ -25,8 +25,6 @@ Then go to [http://localhost:3000/](http://localhost:3000/) to see it in action.
 [Express]: https://expressjs.com/
 [Nunjucks]: https://mozilla.github.io/nunjucks/
 [Snyk]: https://snyk.io/
-[GOV.UK Template]: https://github.com/alphagov/govuk_template
-[Elements]: https://github.com/alphagov/govuk_elements
-[Toolkit]: https://github.com/alphagov/govuk_frontend_toolkit
+[GOV.UK Frontend]: https://design-system.service.gov.uk/
 [Browserify]: http://browserify.org/
 [StandardJS]: https://standardjs.com/
