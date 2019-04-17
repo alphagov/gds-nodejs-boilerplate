@@ -5,7 +5,6 @@ const path = require('path')
 const express = require('express')
 const favicon = require('serve-favicon')
 const bodyParser = require('body-parser')
-const i18n = require('i18n')
 const logger = require('pino')()
 const loggingMiddleware = require('morgan')
 const argv = require('minimist')(process.argv.slice(2))
@@ -53,17 +52,6 @@ function initialiseGlobalMiddleware (app) {
   app.use(bodyParser.urlencoded({ extended: true }))
 
   app.use('*', correlationHeader)
-}
-
-function initialiseI18n (app) {
-  i18n.configure({
-    locales: ['en'],
-    directory: path.join(__dirname, '/locales'),
-    objectNotation: true,
-    defaultLocale: 'en',
-    register: global
-  })
-  app.use(i18n.init)
 }
 
 function initialiseProxy (app) {
@@ -121,7 +109,6 @@ function initialise () {
   const app = unconfiguredApp
   app.disable('x-powered-by')
   initialiseProxy(app)
-  initialiseI18n(app)
   initialiseGlobalMiddleware(app)
   initialiseTemplateEngine(app)
   initialiseRoutes(app)

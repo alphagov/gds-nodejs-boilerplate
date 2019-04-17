@@ -54,21 +54,20 @@ module.exports = function (grunt) {
   const browserify = {
     'public/javascripts/browsered.js': ['common/browsered/index.js'],
     options: {
-      browserifyOptions: { standalone: 'module' },
-      transform: [
-        [
-          'babelify',
-          {
-            presets: ['@babel/preset-env']
-          }
-        ],
-        [
-          'nunjucksify',
-          {
-            extension: '.njk'
-          }
-        ]
-      ]
+      browserifyOptions: {
+        standalone: 'module'
+      }
+    }
+  }
+
+  const babel = {
+    options: {
+      presets: ['@babel/preset-env']
+    },
+    dist: {
+      files: {
+        'public/javascripts/browsered.js': 'public/javascripts/browsered.js'
+      }
     }
   }
 
@@ -136,6 +135,7 @@ module.exports = function (grunt) {
     sass,
     watch,
     browserify,
+    babel,
     nodemon,
     concurrent,
     cssmin,
@@ -154,7 +154,8 @@ module.exports = function (grunt) {
     'grunt-concurrent',
     'grunt-browserify',
     'grunt-contrib-concat',
-    'grunt-rewrite'
+    'grunt-rewrite',
+    'grunt-babel'
   ].forEach(task => {
     grunt.loadNpmTasks(task)
   })
@@ -163,6 +164,7 @@ module.exports = function (grunt) {
     'clean',
     'sass',
     'browserify',
+    'babel',
     'concat',
     'rewrite',
     'compress',
