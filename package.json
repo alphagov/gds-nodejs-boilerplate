@@ -39,7 +39,6 @@
   "devDependencies": {
     "@babel/core": "^7.4.3",
     "@babel/preset-env": "^7.4.3",
-    "babelify": "^10.0.0",
     "chai": "^4.2.0",
     "cheerio": "^1.0.0-rc.3",
     "chokidar-cli": "latest",
