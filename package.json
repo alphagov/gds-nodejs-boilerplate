@@ -12,10 +12,10 @@
     "clean": "grunt clean",
     "server": "node ./start.js",
     "start": "npm run compile && npm run server",
-    "watch": "chokidar app test *.js --initial -c 'npm run test'",
+    "watch": "chokidar app test *.js --initial -c \"npm run test\"",
     "watch-live-reload": "./node_modules/.bin/grunt watch",
     "lint-sass": "./node_modules/.bin/sass-lint -v",
-    "test": "standard && node ./node_modules/mocha/bin/mocha '!(node_modules)/**/*+(.test|.tests)'.js",
+    "test": "standard && node ./node_modules/mocha/bin/mocha \"!(node_modules)/**/*+(.test|.tests)\".js",
     "snyk-protect": "./node_modules/.bin/snyk protect",
     "prepublish": "npm run snyk-protect"
   },
