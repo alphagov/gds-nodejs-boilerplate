@@ -23,6 +23,19 @@ module.exports = function (grunt) {
     }
   }
 
+  const copy = {
+    assets: {
+      files: [
+        {
+          expand: true,
+          cwd: 'common/assets/',
+          src: ['**/*', '!sass/**'],
+          dest: 'public/'
+        }
+      ]
+    }
+  }
+
   const cssmin = {
     target: {
       files: {
@@ -140,6 +153,7 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     clean: ['public', 'govuk_modules'],
+    copy,
     sass,
     watch,
     browserify,
@@ -153,6 +167,7 @@ module.exports = function (grunt) {
   });
 
   [
+    'grunt-contrib-copy',
     'grunt-contrib-cssmin',
     'grunt-contrib-compress',
     'grunt-contrib-watch',
@@ -170,6 +185,7 @@ module.exports = function (grunt) {
 
   grunt.registerTask('generate-assets', [
     'clean',
+    'copy',
     'sass',
     'browserify',
     'babel',
