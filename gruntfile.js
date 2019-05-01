@@ -29,7 +29,7 @@ module.exports = function (grunt) {
         {
           expand: true,
           cwd: 'common/assets/',
-          src: ['**/*', '!sass/**'],
+          src: ['**/*', '!sass/**', '!javascripts/**'],
           dest: 'public/'
         }
       ]
@@ -56,16 +56,19 @@ module.exports = function (grunt) {
       }
     },
     js: {
-      files: ['common/browsered/index.js'],
-      tasks: ['browserify', 'babel', 'concat'],
+      files: [
+        'common/browsered/index.js',
+        'common/assets/javascripts/**/*.js'
+      ],
+      tasks: ['browserify', 'babel', 'concat', 'compress'],
       options: {
         spawn: false,
         livereload: true
       }
     },
     assets: {
-      files: ['common/assets/**/*', '!common/assets/sass/**'],
-      tasks: ['copy:assets'],
+      files: ['common/assets/**/*', '!common/assets/sass/**', '!common/assets/javascripts/**'],
+      tasks: ['copy:assets', 'compress'],
       options: {
         spawn: false
       }
@@ -119,8 +122,7 @@ module.exports = function (grunt) {
     dist: {
       src: [
         'public/javascripts/browsered.js',
-        'common/assets/javascripts/base/*.js',
-        'common/assets/javascripts/modules/*.js'
+        'common/assets/javascripts/**/*.js'
       ],
       dest: 'public/javascripts/application.js'
     }
@@ -196,16 +198,4 @@ module.exports = function (grunt) {
   ])
 
   grunt.registerTask('default', ['generate-assets', 'concurrent:target'])
-
-  /**
-   * On watch, copy the asset that was changed, not all of them
-   */
-  grunt.event.on('watch', (action, filepath, target) => {
-    if (target === 'assets') {
-      grunt.config(
-        'copy.assets.files.0.src',
-        filepath.replace('common/assets/', '')
-      )
-    }
-  })
 }
