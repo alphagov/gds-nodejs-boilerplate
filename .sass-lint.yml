@@ -1,0 +1,22 @@
+files:
+  include: 'common/assets/sass/**/*.scss'
+
+rules:
+  class-name-format:
+    - 1
+    -
+      convention: hyphenatedbem
+  force-attribute-nesting: 0
+  force-element-nesting: 0
+  force-pseudo-nesting: 0
+  hex-length:
+    - 1
+    -
+      style: long
+  mixins-before-declarations: 0
+  no-important: 0
+  property-sort-order: 0
+  quotes:
+    - 1
+    -
+      style: double
