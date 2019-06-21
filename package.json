@@ -5,7 +5,7 @@
   "private": true,
   "license": "MIT",
   "engines": {
-    "node": ">6.12.2"
+    "node": "10.16.0"
   },
   "scripts": {
     "compile": "grunt generate-assets",
