@@ -55,7 +55,7 @@ function onInterrupt () {
   pid = fs.readFileSync(pidFile, fileOptions)
   fs.unlink(pidFile)
   process.kill(pid, 'SIGTERM')
-  process.exit() // eslint-disable-line unicorn/no-process-exit
+  process.exit()
 }
 
 /**
