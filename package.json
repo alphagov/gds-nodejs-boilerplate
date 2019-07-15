@@ -34,8 +34,8 @@
     "throng": "4.0.x"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.3",
-    "@babel/preset-env": "^7.4.3",
+    "@babel/core": "^7.5.4",
+    "@babel/preset-env": "^7.5.4",
     "chai": "^4.2.0",
     "cheerio": "^1.0.0-rc.3",
     "chokidar-cli": "latest",
