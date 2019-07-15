@@ -24,7 +24,7 @@
     "compression": "^1.7.4",
     "express": "4.16.x",
     "govuk-frontend": "^2.13.0",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.14",
     "minimist": "1.2.x",
     "morgan": "1.9.x",
     "nunjucks": "^3.2.0",
