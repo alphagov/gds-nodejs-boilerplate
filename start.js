@@ -53,9 +53,12 @@ function startWorker (workerId) {
  */
 function onInterrupt () {
   pid = fs.readFileSync(pidFile, fileOptions)
-  fs.unlink(pidFile)
+  fs.unlink(pidFile, (err) => {
+    if (err) throw err
+    console.log('File successfully deleted')
+  })
   process.kill(pid, 'SIGTERM')
-  process.exit() // eslint-disable-line unicorn/no-process-exit
+  process.exit()
 }
 
 /**
