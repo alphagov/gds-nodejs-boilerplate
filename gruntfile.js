@@ -66,6 +66,13 @@ module.exports = function (grunt) {
         livereload: true
       }
     },
+    templates: {
+      files: ['app/**/*.njk', 'common/**/*.njk'],
+      options: {
+        spawn: false,
+        livereload: true
+      }
+    },
     assets: {
       files: ['common/assets/**/*', '!common/assets/sass/**', '!common/assets/javascripts/**'],
       tasks: ['copy:assets', 'compress'],
